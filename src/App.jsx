@@ -47,6 +47,14 @@ export default function App() {
 		setImgURL("");
 		setTitle("");
 	};
+
+	const HandleDelete = (id) => {
+		const newblogs = blogs.filter((el) => el.time !== id);
+		setBlogs(newblogs);
+
+		let localBlogs = JSON.stringify(newblogs);
+		localStorage.setItem("blogs", localBlogs);
+	};
 	return (
 		<div className="App">
 			<h1>Blog Listing</h1>
@@ -83,6 +91,13 @@ export default function App() {
 							<img src={el.imgURL} alt="" />
 							<h3>{el.writer}</h3>
 							<h5>Blog Uploaded: {el.time}</h5>
+							<button
+								onClick={() => {
+									HandleDelete(el.time);
+								}}
+							>
+								Delete
+							</button>
 						</div>
 					);
 				})}
