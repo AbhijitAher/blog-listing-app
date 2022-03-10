@@ -94,3 +94,8 @@ input:focus {
 .blog h3 {
 	margin: 0;
 }
+
+.list {
+	display: flex;
+	flex-wrap: wrap;
+}

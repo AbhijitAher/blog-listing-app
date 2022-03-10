@@ -85,7 +85,7 @@ export default function App() {
 					Add
 				</button>
 			</div>
-			<div>
+			<div className="list">
 				{blogs.map((el) => {
 					return (
 						<div className="blog" key={el.time}>
