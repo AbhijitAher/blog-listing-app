@@ -57,7 +57,7 @@ export default function App() {
 	};
 	return (
 		<div className="App">
-			<h1>Blog Listing</h1>
+			<h1>Blog Listing App</h1>
 			<div>
 				<input
 					type="text"
@@ -81,17 +81,20 @@ export default function App() {
 					placeholder="Writer"
 				/>
 				<br />
-				<button onClick={HandleSubmit}>Add</button>
+				<button className="add" onClick={HandleSubmit}>
+					Add
+				</button>
 			</div>
 			<div>
 				{blogs.map((el) => {
 					return (
-						<div key={el.time}>
+						<div className="blog" key={el.time}>
 							<h2>{el.title}</h2>
 							<img src={el.imgURL} alt="" />
-							<h3>{el.writer}</h3>
+							<h3>By: {el.writer}</h3>
 							<h5>Blog Uploaded: {el.time}</h5>
 							<button
+								className="delete"
 								onClick={() => {
 									HandleDelete(el.time);
 								}}
