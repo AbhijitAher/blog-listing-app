@@ -26,6 +26,7 @@ export default function App() {
 	const HandleImgURLChange = (e) => {
 		setImgURL(e.target.value);
 	};
+
 	const HandleSubmit = () => {
 		let obj = {
 			title: title,
@@ -39,22 +40,38 @@ export default function App() {
 		setBlogs(newBlogs);
 
 		// updating the LocalStorage
-		let localBlogs = JSON.stringify(blogs);
+		let localBlogs = JSON.stringify(newBlogs);
 		localStorage.setItem("blogs", localBlogs);
+
+		setWriter("");
+		setImgURL("");
+		setTitle("");
 	};
 	return (
 		<div className="App">
 			<h1>Blog Listing</h1>
 			<div>
-				<input type="text" onChange={HandleTitleChange} placeholder="Title" />{" "}
+				<input
+					type="text"
+					onChange={HandleTitleChange}
+					value={title}
+					placeholder="Title"
+				/>{" "}
 				<br />
+				{/* https://via.placeholder.com/200x100 */}
 				<input
 					type="text"
 					onChange={HandleImgURLChange}
+					value={imgURL}
 					placeholder="Image URL for blog"
 				/>{" "}
 				<br />
-				<input type="text" onChange={HandleWriterChange} placeholder="Writer" />
+				<input
+					type="text"
+					onChange={HandleWriterChange}
+					value={writer}
+					placeholder="Writer"
+				/>
 				<br />
 				<button onClick={HandleSubmit}>Add</button>
 			</div>
